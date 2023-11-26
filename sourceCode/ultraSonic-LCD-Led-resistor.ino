@@ -1,29 +1,3 @@
-# MidTerm - How to setup UltraSonic Sensor on Arduino (I2C)
-Today, Our team are going to use UltraSonic Sensor to detect the distance of the object. If we detect the distance under 200cm, then it will light up the LED and print out the result via LCD. Let's get it started!
-
-## What do we need?
-
-Here is our Component list:
-
-![Diagram](./images/component_view.png)
-
-## How does it look like?
-Here is the circuit view of our project:
-
-![Diagram](./images/diagram.png) 
-
-And our schematic view:
-
-![Diagram](./images/schematic_view.png) 
-
-## Install the library
-First of all, we need to install the library on Arduino IDE. Here we use <LiquidCrystal_I2C.h> library to control the LCD. Open the ***Library Manager*** and clidk the "<code style="color : red">INSTALL</code>" button:
-
-![Library Manager](./images/library_manager.png)
-
-## Let's code!
-Now we put our main code to the editor and upload it to the Arduino (We use ***Arduino IDE v2.2.2***). Here is our code:
-```
 #include <LiquidCrystal_I2C.h>
 //khai bao man hinh
 int totalColumns = 16;
@@ -40,6 +14,7 @@ float duration_us, distance_cm;
 LiquidCrystal_I2C lcd(0x27, totalColumns, totalRows);
 
 String line1 = "Nguyen Thai Minh Thien Pham Ho Tan Dat";
+
 
 int scrollSpeed = 100;
 void setup(){
@@ -61,7 +36,7 @@ void loop()
     duration_us = pulseIn(ECHO_PIN, HIGH);
     // calculate the distance
     distance_cm = 0.017 * duration_us;
-    
+    s
     lcd.setCursor(0,0);
     lcd.print(line1);
     lcd.setCursor(0,1);
@@ -86,12 +61,10 @@ void loop()
       lcd.print("Out of Range");
     }  // turn off LED
 
+
+
   delay(1000);
 
-  lcd.clear();
-}   
-```
-Then, we upload and verify code. Finish!
 
-## Conclusion
-Here is our project that shown in above. Hope everyone like and enjoy it! Thank you!
+  lcd.clear();
+}
